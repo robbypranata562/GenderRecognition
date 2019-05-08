@@ -1,0 +1,913 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.5": {
+      "ClosedXML/0.94.2": {
+        "type": "package",
+        "dependencies": {
+          "DocumentFormat.OpenXml": "2.7.2",
+          "ExcelNumberFormat": "1.0.3",
+          "FastMember": "1.3.0"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net40/ClosedXML.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ClosedXML.dll": {}
+        }
+      },
+      "DocumentFormat.OpenXml/2.7.2": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DocumentFormat.OpenXml.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DocumentFormat.OpenXml.dll": {}
+        }
+      },
+      "EMGU.CV/4.0.1.3373": {
+        "type": "package",
+        "dependencies": {
+          "ZedGraph": "[5.1.7]"
+        },
+        "compile": {
+          "lib/net35/Emgu.CV.UI.dll": {},
+          "lib/net35/Emgu.CV.World.dll": {}
+        },
+        "runtime": {
+          "lib/net35/Emgu.CV.UI.dll": {},
+          "lib/net35/Emgu.CV.World.dll": {}
+        },
+        "build": {
+          "build/EMGU.CV.targets": {}
+        }
+      },
+      "ExcelNumberFormat/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net20/ExcelNumberFormat.dll": {}
+        },
+        "runtime": {
+          "lib/net20/ExcelNumberFormat.dll": {}
+        }
+      },
+      "FastMember/1.3.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Data"
+        ],
+        "compile": {
+          "lib/net45/FastMember.dll": {}
+        },
+        "runtime": {
+          "lib/net45/FastMember.dll": {}
+        }
+      },
+      "LinqToExcel/1.11.0": {
+        "type": "package",
+        "compile": {
+          "lib/LinqToExcel.dll": {},
+          "lib/Remotion.Data.Linq.dll": {},
+          "lib/Remotion.Interfaces.dll": {},
+          "lib/Remotion.dll": {}
+        },
+        "runtime": {
+          "lib/LinqToExcel.dll": {},
+          "lib/Remotion.Data.Linq.dll": {},
+          "lib/Remotion.Interfaces.dll": {},
+          "lib/Remotion.dll": {}
+        }
+      },
+      "System.Xml.Linq/3.5.21022.801": {
+        "type": "package",
+        "compile": {
+          "lib/net20/System.Xml.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/net20/System.Xml.Linq.dll": {}
+        }
+      },
+      "WindowsAPICodePack-Core/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {}
+        }
+      },
+      "WindowsAPICodePack-Shell/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "WindowsAPICodePack-Core": "1.1.1"
+        },
+        "compile": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        }
+      },
+      "ZedGraph/5.1.7": {
+        "type": "package",
+        "compile": {
+          "lib/net35-Client/ZedGraph.dll": {}
+        },
+        "runtime": {
+          "lib/net35-Client/ZedGraph.dll": {}
+        },
+        "resource": {
+          "lib/net35-Client/de/ZedGraph.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net35-Client/es/ZedGraph.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net35-Client/fr/ZedGraph.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net35-Client/hu/ZedGraph.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/net35-Client/it/ZedGraph.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net35-Client/ja/ZedGraph.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net35-Client/pt/ZedGraph.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net35-Client/ru/ZedGraph.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net35-Client/sk/ZedGraph.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net35-Client/sv/ZedGraph.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net35-Client/tr/ZedGraph.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net35-Client/zh-cn/ZedGraph.resources.dll": {
+            "locale": "zh-cn"
+          },
+          "lib/net35-Client/zh-tw/ZedGraph.resources.dll": {
+            "locale": "zh-tw"
+          }
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win": {
+      "ClosedXML/0.94.2": {
+        "type": "package",
+        "dependencies": {
+          "DocumentFormat.OpenXml": "2.7.2",
+          "ExcelNumberFormat": "1.0.3",
+          "FastMember": "1.3.0"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net40/ClosedXML.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ClosedXML.dll": {}
+        }
+      },
+      "DocumentFormat.OpenXml/2.7.2": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DocumentFormat.OpenXml.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DocumentFormat.OpenXml.dll": {}
+        }
+      },
+      "EMGU.CV/4.0.1.3373": {
+        "type": "package",
+        "dependencies": {
+          "ZedGraph": "[5.1.7]"
+        },
+        "compile": {
+          "lib/net35/Emgu.CV.UI.dll": {},
+          "lib/net35/Emgu.CV.World.dll": {}
+        },
+        "runtime": {
+          "lib/net35/Emgu.CV.UI.dll": {},
+          "lib/net35/Emgu.CV.World.dll": {}
+        },
+        "build": {
+          "build/EMGU.CV.targets": {}
+        }
+      },
+      "ExcelNumberFormat/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net20/ExcelNumberFormat.dll": {}
+        },
+        "runtime": {
+          "lib/net20/ExcelNumberFormat.dll": {}
+        }
+      },
+      "FastMember/1.3.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Data"
+        ],
+        "compile": {
+          "lib/net45/FastMember.dll": {}
+        },
+        "runtime": {
+          "lib/net45/FastMember.dll": {}
+        }
+      },
+      "LinqToExcel/1.11.0": {
+        "type": "package",
+        "compile": {
+          "lib/LinqToExcel.dll": {},
+          "lib/Remotion.Data.Linq.dll": {},
+          "lib/Remotion.Interfaces.dll": {},
+          "lib/Remotion.dll": {}
+        },
+        "runtime": {
+          "lib/LinqToExcel.dll": {},
+          "lib/Remotion.Data.Linq.dll": {},
+          "lib/Remotion.Interfaces.dll": {},
+          "lib/Remotion.dll": {}
+        }
+      },
+      "System.Xml.Linq/3.5.21022.801": {
+        "type": "package",
+        "compile": {
+          "lib/net20/System.Xml.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/net20/System.Xml.Linq.dll": {}
+        }
+      },
+      "WindowsAPICodePack-Core/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {}
+        }
+      },
+      "WindowsAPICodePack-Shell/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "WindowsAPICodePack-Core": "1.1.1"
+        },
+        "compile": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        }
+      },
+      "ZedGraph/5.1.7": {
+        "type": "package",
+        "compile": {
+          "lib/net35-Client/ZedGraph.dll": {}
+        },
+        "runtime": {
+          "lib/net35-Client/ZedGraph.dll": {}
+        },
+        "resource": {
+          "lib/net35-Client/de/ZedGraph.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net35-Client/es/ZedGraph.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net35-Client/fr/ZedGraph.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net35-Client/hu/ZedGraph.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/net35-Client/it/ZedGraph.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net35-Client/ja/ZedGraph.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net35-Client/pt/ZedGraph.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net35-Client/ru/ZedGraph.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net35-Client/sk/ZedGraph.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net35-Client/sv/ZedGraph.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net35-Client/tr/ZedGraph.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net35-Client/zh-cn/ZedGraph.resources.dll": {
+            "locale": "zh-cn"
+          },
+          "lib/net35-Client/zh-tw/ZedGraph.resources.dll": {
+            "locale": "zh-tw"
+          }
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win-x64": {
+      "ClosedXML/0.94.2": {
+        "type": "package",
+        "dependencies": {
+          "DocumentFormat.OpenXml": "2.7.2",
+          "ExcelNumberFormat": "1.0.3",
+          "FastMember": "1.3.0"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net40/ClosedXML.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ClosedXML.dll": {}
+        }
+      },
+      "DocumentFormat.OpenXml/2.7.2": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DocumentFormat.OpenXml.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DocumentFormat.OpenXml.dll": {}
+        }
+      },
+      "EMGU.CV/4.0.1.3373": {
+        "type": "package",
+        "dependencies": {
+          "ZedGraph": "[5.1.7]"
+        },
+        "compile": {
+          "lib/net35/Emgu.CV.UI.dll": {},
+          "lib/net35/Emgu.CV.World.dll": {}
+        },
+        "runtime": {
+          "lib/net35/Emgu.CV.UI.dll": {},
+          "lib/net35/Emgu.CV.World.dll": {}
+        },
+        "build": {
+          "build/EMGU.CV.targets": {}
+        }
+      },
+      "ExcelNumberFormat/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net20/ExcelNumberFormat.dll": {}
+        },
+        "runtime": {
+          "lib/net20/ExcelNumberFormat.dll": {}
+        }
+      },
+      "FastMember/1.3.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Data"
+        ],
+        "compile": {
+          "lib/net45/FastMember.dll": {}
+        },
+        "runtime": {
+          "lib/net45/FastMember.dll": {}
+        }
+      },
+      "LinqToExcel/1.11.0": {
+        "type": "package",
+        "compile": {
+          "lib/LinqToExcel.dll": {},
+          "lib/Remotion.Data.Linq.dll": {},
+          "lib/Remotion.Interfaces.dll": {},
+          "lib/Remotion.dll": {}
+        },
+        "runtime": {
+          "lib/LinqToExcel.dll": {},
+          "lib/Remotion.Data.Linq.dll": {},
+          "lib/Remotion.Interfaces.dll": {},
+          "lib/Remotion.dll": {}
+        }
+      },
+      "System.Xml.Linq/3.5.21022.801": {
+        "type": "package",
+        "compile": {
+          "lib/net20/System.Xml.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/net20/System.Xml.Linq.dll": {}
+        }
+      },
+      "WindowsAPICodePack-Core/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {}
+        }
+      },
+      "WindowsAPICodePack-Shell/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "WindowsAPICodePack-Core": "1.1.1"
+        },
+        "compile": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        }
+      },
+      "ZedGraph/5.1.7": {
+        "type": "package",
+        "compile": {
+          "lib/net35-Client/ZedGraph.dll": {}
+        },
+        "runtime": {
+          "lib/net35-Client/ZedGraph.dll": {}
+        },
+        "resource": {
+          "lib/net35-Client/de/ZedGraph.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net35-Client/es/ZedGraph.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net35-Client/fr/ZedGraph.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net35-Client/hu/ZedGraph.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/net35-Client/it/ZedGraph.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net35-Client/ja/ZedGraph.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net35-Client/pt/ZedGraph.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net35-Client/ru/ZedGraph.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net35-Client/sk/ZedGraph.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net35-Client/sv/ZedGraph.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net35-Client/tr/ZedGraph.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net35-Client/zh-cn/ZedGraph.resources.dll": {
+            "locale": "zh-cn"
+          },
+          "lib/net35-Client/zh-tw/ZedGraph.resources.dll": {
+            "locale": "zh-tw"
+          }
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win-x86": {
+      "ClosedXML/0.94.2": {
+        "type": "package",
+        "dependencies": {
+          "DocumentFormat.OpenXml": "2.7.2",
+          "ExcelNumberFormat": "1.0.3",
+          "FastMember": "1.3.0"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase"
+        ],
+        "compile": {
+          "lib/net40/ClosedXML.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ClosedXML.dll": {}
+        }
+      },
+      "DocumentFormat.OpenXml/2.7.2": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DocumentFormat.OpenXml.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DocumentFormat.OpenXml.dll": {}
+        }
+      },
+      "EMGU.CV/4.0.1.3373": {
+        "type": "package",
+        "dependencies": {
+          "ZedGraph": "[5.1.7]"
+        },
+        "compile": {
+          "lib/net35/Emgu.CV.UI.dll": {},
+          "lib/net35/Emgu.CV.World.dll": {}
+        },
+        "runtime": {
+          "lib/net35/Emgu.CV.UI.dll": {},
+          "lib/net35/Emgu.CV.World.dll": {}
+        },
+        "build": {
+          "build/EMGU.CV.targets": {}
+        }
+      },
+      "ExcelNumberFormat/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net20/ExcelNumberFormat.dll": {}
+        },
+        "runtime": {
+          "lib/net20/ExcelNumberFormat.dll": {}
+        }
+      },
+      "FastMember/1.3.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Data"
+        ],
+        "compile": {
+          "lib/net45/FastMember.dll": {}
+        },
+        "runtime": {
+          "lib/net45/FastMember.dll": {}
+        }
+      },
+      "LinqToExcel/1.11.0": {
+        "type": "package",
+        "compile": {
+          "lib/LinqToExcel.dll": {},
+          "lib/Remotion.Data.Linq.dll": {},
+          "lib/Remotion.Interfaces.dll": {},
+          "lib/Remotion.dll": {}
+        },
+        "runtime": {
+          "lib/LinqToExcel.dll": {},
+          "lib/Remotion.Data.Linq.dll": {},
+          "lib/Remotion.Interfaces.dll": {},
+          "lib/Remotion.dll": {}
+        }
+      },
+      "System.Xml.Linq/3.5.21022.801": {
+        "type": "package",
+        "compile": {
+          "lib/net20/System.Xml.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/net20/System.Xml.Linq.dll": {}
+        }
+      },
+      "WindowsAPICodePack-Core/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {}
+        }
+      },
+      "WindowsAPICodePack-Shell/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "WindowsAPICodePack-Core": "1.1.1"
+        },
+        "compile": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        }
+      },
+      "ZedGraph/5.1.7": {
+        "type": "package",
+        "compile": {
+          "lib/net35-Client/ZedGraph.dll": {}
+        },
+        "runtime": {
+          "lib/net35-Client/ZedGraph.dll": {}
+        },
+        "resource": {
+          "lib/net35-Client/de/ZedGraph.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net35-Client/es/ZedGraph.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net35-Client/fr/ZedGraph.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net35-Client/hu/ZedGraph.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/net35-Client/it/ZedGraph.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net35-Client/ja/ZedGraph.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net35-Client/pt/ZedGraph.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net35-Client/ru/ZedGraph.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net35-Client/sk/ZedGraph.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/net35-Client/sv/ZedGraph.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net35-Client/tr/ZedGraph.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net35-Client/zh-cn/ZedGraph.resources.dll": {
+            "locale": "zh-cn"
+          },
+          "lib/net35-Client/zh-tw/ZedGraph.resources.dll": {
+            "locale": "zh-tw"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ClosedXML/0.94.2": {
+      "sha512": "ldiDZySdXA+AKz0UzVCBeeBadCc9wKf4pJPmz3pJEMqr1XjUw/YZ/jpys7SsP+W57OZ09245MFW0ZokCtAk+UQ==",
+      "type": "package",
+      "path": "closedxml/0.94.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "closedxml.0.94.2.nupkg.sha512",
+        "closedxml.nuspec",
+        "lib/net40/ClosedXML.dll",
+        "lib/net40/ClosedXML.pdb",
+        "lib/net40/ClosedXML.xml",
+        "lib/net46/ClosedXML.dll",
+        "lib/net46/ClosedXML.pdb",
+        "lib/net46/ClosedXML.xml",
+        "lib/netstandard2.0/ClosedXML.dll",
+        "lib/netstandard2.0/ClosedXML.pdb",
+        "lib/netstandard2.0/ClosedXML.xml"
+      ]
+    },
+    "DocumentFormat.OpenXml/2.7.2": {
+      "sha512": "tWT7iu0ab9PNoMTWjv24rt+qnyqvcnPOYs167vPnk4aegAYSAxoUjwNW+VxY8xoLtJntQ/JlWTi7Vt+8TghLlQ==",
+      "type": "package",
+      "path": "documentformat.openxml/2.7.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "documentformat.openxml.2.7.2.nupkg.sha512",
+        "documentformat.openxml.nuspec",
+        "lib/net35/DocumentFormat.OpenXml.dll",
+        "lib/net35/DocumentFormat.OpenXml.xml",
+        "lib/net40/DocumentFormat.OpenXml.dll",
+        "lib/net40/DocumentFormat.OpenXml.xml",
+        "lib/net46/DocumentFormat.OpenXml.dll",
+        "lib/net46/DocumentFormat.OpenXml.xml",
+        "lib/netstandard1.3/DocumentFormat.OpenXml.dll",
+        "lib/netstandard1.3/DocumentFormat.OpenXml.xml"
+      ]
+    },
+    "EMGU.CV/4.0.1.3373": {
+      "sha512": "KeErZ9PQFEPe4rHMgilRMCq+xr7kgkB7xcTd/HKMNA/tzcjp27Qqw0vyM7LC1sR7L4HuOBO3bYzoRfSyxxDImg==",
+      "type": "package",
+      "path": "emgu.cv/4.0.1.3373",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Emgu.CV.License.txt",
+        "build/EMGU.CV.targets",
+        "build/x64/concrt140.dll",
+        "build/x64/cvextern.dll",
+        "build/x64/msvcp140.dll",
+        "build/x64/opencv_ffmpeg401_64.dll",
+        "build/x64/vcruntime140.dll",
+        "build/x86/concrt140.dll",
+        "build/x86/cvextern.dll",
+        "build/x86/msvcp140.dll",
+        "build/x86/opencv_ffmpeg401.dll",
+        "build/x86/vcruntime140.dll",
+        "emgu.cv.4.0.1.3373.nupkg.sha512",
+        "emgu.cv.nuspec",
+        "lib/net35/Emgu.CV.UI.XML",
+        "lib/net35/Emgu.CV.UI.dll",
+        "lib/net35/Emgu.CV.World.dll",
+        "lib/net35/Emgu.CV.World.xml"
+      ]
+    },
+    "ExcelNumberFormat/1.0.3": {
+      "sha512": "ZPF7p4+qUJA6KKHoCTbzCEFZ0G4U8g3lusma5MFNy+NSqR165Z16Z5c1vRE/pKfQxVNGkGHfJtj/xmArenwj/w==",
+      "type": "package",
+      "path": "excelnumberformat/1.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "excelnumberformat.1.0.3.nupkg.sha512",
+        "excelnumberformat.nuspec",
+        "lib/net20/ExcelNumberFormat.dll",
+        "lib/net20/ExcelNumberFormat.xml",
+        "lib/netstandard1.0/ExcelNumberFormat.dll",
+        "lib/netstandard1.0/ExcelNumberFormat.xml"
+      ]
+    },
+    "FastMember/1.3.0": {
+      "sha512": "AmB/DQoEvpbs6zDUjOk0pRhewKrvhZ+8mSK/8GrcmvkX7/HKjJxXtosmu5AXE9Lxw5cSZ0onnl27bb9J3bcp1A==",
+      "type": "package",
+      "path": "fastmember/1.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fastmember.1.3.0.nupkg.sha512",
+        "fastmember.nuspec",
+        "lib/net40/FastMember.dll",
+        "lib/net45/FastMember.dll",
+        "lib/netstandard1.5/FastMember.dll",
+        "lib/netstandard2.0/FastMember.dll"
+      ]
+    },
+    "LinqToExcel/1.11.0": {
+      "sha512": "j3e8Dzq5z5hXeRWCV1AP/Kn7dGFrydlv2U1OtzquAYlW89oPSyG0NQSCEaaGg4wdTDW8sQNLGT3lyQDSq3ARmA==",
+      "type": "package",
+      "path": "linqtoexcel/1.11.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/LinqToExcel.dll",
+        "lib/LinqToExcel.xml",
+        "lib/Remotion.Data.Linq.dll",
+        "lib/Remotion.Interfaces.dll",
+        "lib/Remotion.dll",
+        "linqtoexcel.1.11.0.nupkg.sha512",
+        "linqtoexcel.nuspec"
+      ]
+    },
+    "System.Xml.Linq/3.5.21022.801": {
+      "sha512": "U6hdQ1sCnMD/s2zqKl23g4Obdovr1ZUnrF1x+NRpaoZBeZX5PSwcp1dgvgvJaRsYZgwUzrC+tj9klb0mMnHUcQ==",
+      "type": "package",
+      "path": "system.xml.linq/3.5.21022.801",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/System.Xml.Linq.dll",
+        "system.xml.linq.3.5.21022.801.nupkg.sha512",
+        "system.xml.linq.nuspec"
+      ]
+    },
+    "WindowsAPICodePack-Core/1.1.1": {
+      "sha512": "GoURoQuE7ea7B7q24YRTBfZbsNO7ZtwSyBHbM8zO0ynwfjAGC0bbAmVrDvZ6HbWtqqOt6QTzdmYnj2WJglb5JQ==",
+      "type": "package",
+      "path": "windowsapicodepack-core/1.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Microsoft.WindowsAPICodePack.dll",
+        "lib/Microsoft.WindowsAPICodePack.xml",
+        "windowsapicodepack-core.1.1.1.nupkg.sha512",
+        "windowsapicodepack-core.nuspec"
+      ]
+    },
+    "WindowsAPICodePack-Shell/1.1.1": {
+      "sha512": "CPFamhL3jPo8O6+ErGsLS4LK3DWP5ncxqhbzpPnYkIW9rjatunUij35iTjprbr9mlYR/5Pbguw21MwSmTOKR4g==",
+      "type": "package",
+      "path": "windowsapicodepack-shell/1.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Microsoft.WindowsAPICodePack.Shell.dll",
+        "lib/Microsoft.WindowsAPICodePack.Shell.xml",
+        "windowsapicodepack-shell.1.1.1.nupkg.sha512",
+        "windowsapicodepack-shell.nuspec"
+      ]
+    },
+    "ZedGraph/5.1.7": {
+      "sha512": "TcZaInxUjYMJDWIaYvs/CgpssfVJQMqiry8GPP70klyheP4tYSQXFWi5HYwJvqao+epeUu3bsk3yDb3Nf/hVWw==",
+      "type": "package",
+      "path": "zedgraph/5.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/License-LGPL.txt",
+        "lib/net35-Client/ZedGraph.XML",
+        "lib/net35-Client/ZedGraph.dll",
+        "lib/net35-Client/de/ZedGraph.resources.dll",
+        "lib/net35-Client/es/ZedGraph.resources.dll",
+        "lib/net35-Client/fr/ZedGraph.resources.dll",
+        "lib/net35-Client/hu/ZedGraph.resources.dll",
+        "lib/net35-Client/it/ZedGraph.resources.dll",
+        "lib/net35-Client/ja/ZedGraph.resources.dll",
+        "lib/net35-Client/pt/ZedGraph.resources.dll",
+        "lib/net35-Client/ru/ZedGraph.resources.dll",
+        "lib/net35-Client/sk/ZedGraph.resources.dll",
+        "lib/net35-Client/sv/ZedGraph.resources.dll",
+        "lib/net35-Client/tr/ZedGraph.resources.dll",
+        "lib/net35-Client/zh-cn/ZedGraph.resources.dll",
+        "lib/net35-Client/zh-tw/ZedGraph.resources.dll",
+        "zedgraph.5.1.7.nupkg.sha512",
+        "zedgraph.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.5": [
+      "ClosedXML >= 0.94.2",
+      "EMGU.CV >= 4.0.1.3373",
+      "LinqToExcel >= 1.11.0",
+      "System.Xml.Linq >= 3.5.21022.801",
+      "WindowsAPICodePack-Shell >= 1.1.1"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Radya Labs\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Radya Labs\\Source\\Repos\\Gender\\GenderRecognition\\GenderRecognition.csproj",
+      "projectName": "GenderRecognition",
+      "projectPath": "C:\\Users\\Radya Labs\\Source\\Repos\\Gender\\GenderRecognition\\GenderRecognition.csproj",
+      "packagesPath": "C:\\Users\\Radya Labs\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Radya Labs\\Source\\Repos\\Gender\\GenderRecognition\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\Radya Labs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net45"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net45": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net45": {
+        "dependencies": {
+          "ClosedXML": {
+            "target": "Package",
+            "version": "[0.94.2, )"
+          },
+          "EMGU.CV": {
+            "target": "Package",
+            "version": "[4.0.1.3373, )"
+          },
+          "LinqToExcel": {
+            "target": "Package",
+            "version": "[1.11.0, )"
+          },
+          "System.Xml.Linq": {
+            "target": "Package",
+            "version": "[3.5.21022.801, )"
+          },
+          "WindowsAPICodePack-Shell": {
+            "target": "Package",
+            "version": "[1.1.1, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}
