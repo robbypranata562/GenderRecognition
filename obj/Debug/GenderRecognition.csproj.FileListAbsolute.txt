@@ -45,7 +45,6 @@ C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\sv\ZedGraph.
 C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\tr\ZedGraph.resources.dll
 C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\zh-cn\ZedGraph.resources.dll
 C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\zh-tw\ZedGraph.resources.dll
-C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\Bunifu_UI_v1.5.3.dll
 C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\obj\Debug\GenderRecognition.FormMain.resources
 C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\obj\Debug\GenderRecognition.Properties.Resources.resources
 C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\obj\Debug\GenderRecognition.csproj.GenerateResource.cache
@@ -55,3 +54,10 @@ C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\obj\Debug\GenderRecogn
 C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\obj\Debug\GenderRecognition.pdb
 C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\obj\Debug\GenderRecognition.Form1.resources
 C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\obj\Debug\GenderRecognition.FormLearningMaching.resources
+C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\gender_net.caffemodel
+C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\gender_net.prototxt
+C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\age_net.caffemodel
+C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\age_net.prototxt
+C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\haarcascade_lefteye_2splits.xml
+C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\haarcascade_righteye_2splits.xml
+C:\Users\Radya Labs\Source\Repos\Gender\GenderRecognition\bin\Debug\lbfmodel.yml

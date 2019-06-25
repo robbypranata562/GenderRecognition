@@ -33,6 +33,11 @@
             this.importBTN = new Bunifu.Framework.UI.BunifuFlatButton();
             this.ProcessBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTotalNA = new System.Windows.Forms.Label();
+            this.lblTotalKelompok = new System.Windows.Forms.Label();
+            this.lblTotalWanita = new System.Windows.Forms.Label();
+            this.lblTotalPria = new System.Windows.Forms.Label();
+            this.lblTotalData = new System.Windows.Forms.Label();
             this.checkGenderBTN = new Bunifu.Framework.UI.BunifuFlatButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.manualRB = new System.Windows.Forms.RadioButton();
@@ -50,6 +55,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgSourceExcel = new System.Windows.Forms.DataGridView();
             this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +65,7 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ExportBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbl_check = new System.Windows.Forms.Label();
             this.bunifuCheckbox1 = new Bunifu.Framework.UI.BunifuCheckbox();
@@ -70,8 +77,10 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.learnMachineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkGenderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bgCheckGender = new System.ComponentModel.BackgroundWorker();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -138,7 +147,7 @@
             this.ProcessBtn.IconVisible = true;
             this.ProcessBtn.IconZoom = 45D;
             this.ProcessBtn.IsTab = false;
-            this.ProcessBtn.Location = new System.Drawing.Point(466, 60);
+            this.ProcessBtn.Location = new System.Drawing.Point(466, 3);
             this.ProcessBtn.Name = "ProcessBtn";
             this.ProcessBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.ProcessBtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
@@ -156,11 +165,15 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.lblTotalNA);
+            this.panel2.Controls.Add(this.lblTotalKelompok);
+            this.panel2.Controls.Add(this.lblTotalWanita);
+            this.panel2.Controls.Add(this.lblTotalPria);
+            this.panel2.Controls.Add(this.lblTotalData);
             this.panel2.Controls.Add(this.checkGenderBTN);
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.LearnBtn);
             this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.ProcessBtn);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.importBTN);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -168,6 +181,56 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(644, 218);
             this.panel2.TabIndex = 6;
+            // 
+            // lblTotalNA
+            // 
+            this.lblTotalNA.AutoSize = true;
+            this.lblTotalNA.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalNA.Location = new System.Drawing.Point(463, 142);
+            this.lblTotalNA.Name = "lblTotalNA";
+            this.lblTotalNA.Size = new System.Drawing.Size(103, 16);
+            this.lblTotalNA.TabIndex = 10;
+            this.lblTotalNA.Text = "Total Data N/A : ";
+            // 
+            // lblTotalKelompok
+            // 
+            this.lblTotalKelompok.AutoSize = true;
+            this.lblTotalKelompok.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalKelompok.Location = new System.Drawing.Point(463, 116);
+            this.lblTotalKelompok.Name = "lblTotalKelompok";
+            this.lblTotalKelompok.Size = new System.Drawing.Size(140, 16);
+            this.lblTotalKelompok.TabIndex = 9;
+            this.lblTotalKelompok.Text = "Total Data Kelompok : ";
+            // 
+            // lblTotalWanita
+            // 
+            this.lblTotalWanita.AutoSize = true;
+            this.lblTotalWanita.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalWanita.Location = new System.Drawing.Point(463, 86);
+            this.lblTotalWanita.Name = "lblTotalWanita";
+            this.lblTotalWanita.Size = new System.Drawing.Size(123, 16);
+            this.lblTotalWanita.TabIndex = 8;
+            this.lblTotalWanita.Text = "Total Data Wanita : ";
+            // 
+            // lblTotalPria
+            // 
+            this.lblTotalPria.AutoSize = true;
+            this.lblTotalPria.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPria.Location = new System.Drawing.Point(463, 60);
+            this.lblTotalPria.Name = "lblTotalPria";
+            this.lblTotalPria.Size = new System.Drawing.Size(105, 16);
+            this.lblTotalPria.TabIndex = 7;
+            this.lblTotalPria.Text = "Total Data Pria : ";
+            // 
+            // lblTotalData
+            // 
+            this.lblTotalData.AutoSize = true;
+            this.lblTotalData.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalData.Location = new System.Drawing.Point(230, 76);
+            this.lblTotalData.Name = "lblTotalData";
+            this.lblTotalData.Size = new System.Drawing.Size(78, 16);
+            this.lblTotalData.TabIndex = 6;
+            this.lblTotalData.Text = "Total Data : ";
             // 
             // checkGenderBTN
             // 
@@ -277,6 +340,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.SeaGreen;
+            this.panel4.Controls.Add(this.ProcessBtn);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -348,7 +412,8 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column11});
+            this.Column11,
+            this.Column12});
             this.dgSourceFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSourceFolder.Location = new System.Drawing.Point(0, 0);
             this.dgSourceFolder.Name = "dgSourceFolder";
@@ -392,6 +457,12 @@
             this.Column11.HeaderText = "Path";
             this.Column11.Name = "Column11";
             this.Column11.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "Age";
+            this.Column12.HeaderText = "Age";
+            this.Column12.Name = "Column12";
             // 
             // dgSourceExcel
             // 
@@ -458,6 +529,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.ExportBtn);
+            this.flowLayoutPanel1.Controls.Add(this.progressBar1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 261);
@@ -499,6 +571,16 @@
             this.ExportBtn.Textcolor = System.Drawing.Color.White;
             this.ExportBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExportBtn.Click += new System.EventHandler(this.ExportBtn_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar1.Location = new System.Drawing.Point(3, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(457, 45);
+            this.progressBar1.Step = 1;
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 2;
             // 
             // panel3
             // 
@@ -593,6 +675,14 @@
             this.checkGenderToolStripMenuItem.Text = "Check Gender";
             this.checkGenderToolStripMenuItem.Click += new System.EventHandler(this.checkGenderToolStripMenuItem_ClickAsync);
             // 
+            // bgCheckGender
+            // 
+            this.bgCheckGender.WorkerReportsProgress = true;
+            this.bgCheckGender.WorkerSupportsCancellation = true;
+            this.bgCheckGender.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgCheckGender_DoWork);
+            this.bgCheckGender.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgCheckGender_ProgressChanged);
+            this.bgCheckGender.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgCheckGender_RunWorkerCompleted);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -603,11 +693,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
-            this.Text = "LastSeen T.Marie";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Check Gender";
             this.Load += new System.EventHandler(this.FormMain_LoadAsync);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -649,11 +742,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton checkGenderBTN;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView dgSourceFolder;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewImageColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridView dgSourceExcel;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
@@ -663,5 +751,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Bunifu.Framework.UI.BunifuFlatButton ExportBtn;
+        private System.Windows.Forms.Label lblTotalData;
+        private System.Windows.Forms.Label lblTotalNA;
+        private System.Windows.Forms.Label lblTotalKelompok;
+        private System.Windows.Forms.Label lblTotalWanita;
+        private System.Windows.Forms.Label lblTotalPria;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewImageColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.ComponentModel.BackgroundWorker bgCheckGender;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

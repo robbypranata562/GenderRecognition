@@ -64,7 +64,7 @@ namespace GenderRecognition
                                 }
                             }
                         }
-                        watch.Stop();
+                        //watch.Stop();
                     }
                 }
                 else
@@ -101,9 +101,9 @@ namespace GenderRecognition
                                 {
                                     Rectangle[] eyesDetected = eye.DetectMultiScale(
                                        faceRegion,
-                                       1.1,
-                                       10,
-                                       new Size(20, 20));
+                                       1.3,
+                                       5,
+                                       new Size(10, 10));
 
                                     foreach (Rectangle e in eyesDetected)
                                     {
@@ -113,12 +113,15 @@ namespace GenderRecognition
                                     }
                                 }
                             }
+                            
                         }
+
                         //watch.Stop();
                     }
                 }
                 detectionTime = 0;
             }
         }
+
     }
 }

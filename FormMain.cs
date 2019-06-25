@@ -17,6 +17,7 @@ using ClosedXML.Excel;
 using System.Drawing.Imaging;
 using LinqToExcel;
 using System.Diagnostics;
+using Emgu.CV.Util;
 
 namespace GenderRecognition
 {
@@ -29,6 +30,7 @@ namespace GenderRecognition
             public byte[] Image { get; set; }
             public string gender { get; set; }
             public string Path { get; set; }
+            public string Age { get; set; }
         }
 
         public class sourceExcelModel
@@ -41,118 +43,119 @@ namespace GenderRecognition
             public string gender { get; set; }
         }
 
-        EigenFaceRecognizer facess;
+        FisherFaceRecognizer facess;
         string selectedFolder = "";
         string selectedFile = "";
         string _folderDownload = "";
-        string _lastDirectory = "";
         string _methodCheckGender = "";
         DataTable dataTable;
         List<sourceFolderModel> sourceFolderModels = new List<sourceFolderModel>();
         List<sourceExcelModel> sourceExcelModels = new List<sourceExcelModel>();
-        List<sourceExcelModel> newSource;
         int rowSelected = 0;
         bool IsFullDownload = false;
+        string[] list = new string[2];
+        string[] listAge = new string[8];
+        Emgu.CV.Dnn.Net Gendernet;
+        Emgu.CV.Dnn.Net AgeNet;
         public FormMain()
         {
             InitializeComponent();
         }
 
-        #region "Learn"
+
         public void learnAsync()
         {
-            Learn();
+            //Learn();
         }
-
-        private void Learn()
-        {
-            var database_male = Application.StartupPath + "/Foto/";
-            if (Directory.Exists(database_male))
-            {
-                int fileCount = Directory.GetFiles(database_male, "*.jpg", SearchOption.AllDirectories).Length;
-                if (fileCount > 0)
-                {
-                    var faceImages = new Mat[fileCount];
-                    var faceLabels = new int[fileCount];
-                    DirectoryInfo d = new DirectoryInfo(database_male);
-                    FileInfo[] Files = d.GetFiles("*.jpg");
-                    int i = 0;
-                    foreach (FileInfo file in Files)
-                    {
-                        Mat imgMat = new Mat(database_male + "\\" + file.Name, ImreadModes.Grayscale);
-                        CvInvoke.Resize(imgMat, imgMat, new Size(48, 48), 0, 0, Inter.Linear);
-                        faceImages[i] = imgMat;
-                        int number = Convert.ToInt32(Path.GetFileNameWithoutExtension(file.Name));
-                        if (number <= 1000000)
-                        {
-                            faceLabels[i] = 1; //pria
-                        }
-                        else
-                        {
-                            faceLabels[i] = 0; //wanita
-                        }
+        //private void Learn()
+        //{
+        //    var database_male = Application.StartupPath + "/Foto/";
+        //    if (Directory.Exists(database_male))
+        //    {
+        //        int fileCount = Directory.GetFiles(database_male, "*.jpg", SearchOption.AllDirectories).Length;
+        //        if (fileCount > 0)
+        //        {
+        //            var faceImages = new Mat[fileCount];
+        //            var faceLabels = new int[fileCount];
+        //            DirectoryInfo d = new DirectoryInfo(database_male);
+        //            FileInfo[] Files = d.GetFiles("*.jpg");
+        //            int i = 0;
+        //            foreach (FileInfo file in Files)
+        //            {
+        //                Mat imgMat = new Mat(database_male + "\\" + file.Name, ImreadModes.Grayscale);
+        //                CvInvoke.Resize(imgMat, imgMat, new Size(64, 64), 0, 0, Inter.Linear);
+        //                faceImages[i] = imgMat;
+        //                int number = Convert.ToInt32(Path.GetFileNameWithoutExtension(file.Name));
+        //                if (number <= 1000000)
+        //                {
+        //                    faceLabels[i] = 1; //pria
+        //                }
+        //                else
+        //                {
+        //                    faceLabels[i] = 0; //wanita
+        //                }
                         
-                        i++;
-                    }
-                    facess.Train(faceImages, faceLabels);
-                    facess.Write(Application.StartupPath + "\\FaceTrained.xml");
-                }
-            }
-        }
+        //                i++;
+        //            }
+        //            facess.Train(faceImages, faceLabels);
+        //            facess.Write(Application.StartupPath + "\\FaceTrained.xml");
+        //        }
+        //    }
+        //}
 
-        private void LearnMale()
-        {
-            var database_male = Application.StartupPath + "/Foto/Male";
-            if (Directory.Exists(database_male))
-            {
-                int fileCount = Directory.GetFiles(database_male, "*.jpg", SearchOption.AllDirectories).Length;
-                if (fileCount > 0)
-                {
-                    var faceImages = new Mat[fileCount];
-                    var faceLabels = new int[fileCount];
-                    DirectoryInfo d = new DirectoryInfo(database_male);
-                    FileInfo[] Files = d.GetFiles("*.jpg");
-                    int i = 0;
-                    foreach (FileInfo file in Files)
-                    {
-                        Mat imgMat = new Mat(database_male + "\\" + file.Name, ImreadModes.Grayscale);
-                        CvInvoke.Resize(imgMat, imgMat, new Size(48, 48), 0, 0, Inter.Linear);
-                        faceImages[i] = imgMat;
-                        faceLabels[i] = 1;
-                        i++;
-                    }
-                    facess.Train(faceImages, faceLabels);
-                }
-            }
-        }
-        private void LearnFemale()
-        {
-            var database_female = Application.StartupPath + "/Foto/Female";
-            if (Directory.Exists(database_female))
-            {
-                int fileCount = Directory.GetFiles(database_female, "*.jpg", SearchOption.AllDirectories).Length;
-                if (fileCount > 0)
-                {
-                    var faceImages = new Mat[fileCount];
-                    var faceLabels = new int[fileCount];
-                    DirectoryInfo d = new DirectoryInfo(database_female);
-                    FileInfo[] Files = d.GetFiles("*.jpg");
-                    int i = 0;
-                    foreach (FileInfo file in Files)
-                    {
-                        Mat imgMat = new Mat(database_female + "\\" + file.Name, ImreadModes.Grayscale);
-                        CvInvoke.Resize(imgMat, imgMat, new Size(48, 48), 0, 0, Inter.Linear);
-                        faceImages[i] = imgMat;
-                        faceLabels[i] = 0;
-                        i++;
-                    }
-                    facess.Train(faceImages, faceLabels);
-                }
-            }
-        }
-        #endregion
-        #region "ReadData"
-        public async void readExcelAsync(string filePath)
+        //private void LearnMale()
+        //{
+        //    var database_male = Application.StartupPath + "/Foto/Male";
+        //    if (Directory.Exists(database_male))
+        //    {
+        //        int fileCount = Directory.GetFiles(database_male, "*.jpg", SearchOption.AllDirectories).Length;
+        //        if (fileCount > 0)
+        //        {
+        //            var faceImages = new Mat[fileCount];
+        //            var faceLabels = new int[fileCount];
+        //            DirectoryInfo d = new DirectoryInfo(database_male);
+        //            FileInfo[] Files = d.GetFiles("*.jpg");
+        //            int i = 0;
+        //            foreach (FileInfo file in Files)
+        //            {
+        //                Mat imgMat = new Mat(database_male + "\\" + file.Name, ImreadModes.Grayscale);
+        //                CvInvoke.Resize(imgMat, imgMat, new Size(64, 64), 0, 0, Inter.Linear);
+        //                faceImages[i] = imgMat;
+        //                faceLabels[i] = 1;
+        //                i++;
+        //            }
+        //            facess.Train(faceImages, faceLabels);
+        //        }
+        //    }
+        //}
+        //private void LearnFemale()
+        //{
+        //    var database_female = Application.StartupPath + "/Foto/Female";
+        //    if (Directory.Exists(database_female))
+        //    {
+        //        int fileCount = Directory.GetFiles(database_female, "*.jpg", SearchOption.AllDirectories).Length;
+        //        if (fileCount > 0)
+        //        {
+        //            var faceImages = new Mat[fileCount];
+        //            var faceLabels = new int[fileCount];
+        //            DirectoryInfo d = new DirectoryInfo(database_female);
+        //            FileInfo[] Files = d.GetFiles("*.jpg");
+        //            int i = 0;
+        //            foreach (FileInfo file in Files)
+        //            {
+        //                Mat imgMat = new Mat(database_female + "\\" + file.Name, ImreadModes.Grayscale);
+        //                CvInvoke.Resize(imgMat, imgMat, new Size(64, 64), 0, 0, Inter.Linear);
+        //                faceImages[i] = imgMat;
+        //                faceLabels[i] = 0;
+        //                i++;
+        //            }
+        //            facess.Train(faceImages, faceLabels);
+        //        }
+        //    }
+        //}
+
+
+        public void readExcelAsync(string filePath)
         {
             IsFullDownload = true;
             foreach (var _data in sourceExcelModels)
@@ -162,7 +165,7 @@ namespace GenderRecognition
                     if (File.ReadAllBytes(_folderDownload + "\\" + _data.name + ".jpg").Length > 0)
                     {
                         _data.Image = Image.FromFile(_folderDownload + "\\" + _data.name + ".jpg");
-                        _data.gender = await CheckGender(_folderDownload + "\\" + _data.name + ".jpg");
+                        _data.gender = CheckGender(_folderDownload + "\\" + _data.name + ".jpg");
                     }
                 }
                     
@@ -216,7 +219,7 @@ namespace GenderRecognition
                 }
             }
         }
-        public async void readFolderAsync(string folderPath)
+        public void readFolderAsync(string folderPath)
         {
             DataGridView.CheckForIllegalCrossThreadCalls = false;
             dataTable = new DataTable();
@@ -245,7 +248,7 @@ namespace GenderRecognition
                 {
                     foreach (var item in sourceFolderModels)
                     {
-                        item.gender = await CheckGender(selectedFolder + "\\" + item.name + ".jpg");
+                        item.gender = CheckGender(selectedFolder + "\\" + item.name + ".jpg");
                     }
                 }
 
@@ -253,8 +256,8 @@ namespace GenderRecognition
             watch.Stop();
             MessageBox.Show("Take Time : " + (watch.ElapsedMilliseconds / 1000).ToString() + " (Seconds)");
         }
-        #endregion
-        #region "Export"
+
+
         public static Stream ToStream(Image image, ImageFormat format)
         {
             var stream = new System.IO.MemoryStream();
@@ -269,6 +272,7 @@ namespace GenderRecognition
             var wb = new XLWorkbook();
             var ws = wb.Worksheets.Add("Sheet1");
             int index = 2;
+            List<String> _newImage = new List<string>();
             if (folderRB.Checked)
             {
                 dgSourceFolder.EndEdit();
@@ -278,14 +282,18 @@ namespace GenderRecognition
                 //    ws.Cell("B" + index).Value = item.gender;
                 //    index++;
                 //}
+              
                 ws.Cell("A1").Value = "Number";
                 ws.Cell("B1").Value = "Gender";
+                ws.Cell("C1").Value = "Age";
                 foreach (DataGridViewRow item in dgSourceFolder.Rows)
                 {
                     if (item.Cells[0].Value.ToString() == "True")
                     {
                         ws.Cell("A" + index).Value = item.Cells[1].Value.ToString();
                         ws.Cell("B" + index).Value = item.Cells[3].Value.ToString();
+                        ws.Cell("C" + index).Value = item.Cells[5].Value.ToString();
+                        _newImage.Add(item.Cells[1].Value.ToString() + ".jpg");
                         index++;
                     }
                     
@@ -322,14 +330,68 @@ namespace GenderRecognition
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 wb.SaveAs(saveFileDialog.FileName);
-                MessageBox.Show("Data Has Been Saved");
+                var a = Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
+                var file = new FileInfo(saveFileDialog.FileName);
+
+                string _newFolder = file.DirectoryName + "\\" + Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
+                System.IO.Directory.CreateDirectory(_newFolder);
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                foreach (var item in _newImage)
+                {
+                    string destFolder = _newFolder + "\\" + item;
+                    System.IO.File.Copy(selectedFolder + "\\" + item , _newFolder + "\\" + item);
+                }
+                string Elapsed_Time = (stopwatch.ElapsedMilliseconds / 1000).ToString();
+                var message = "Data Has Been Saved Take Time "+Elapsed_Time+" Seconds";
+                MessageBox.Show(message);
             }
             
         }
-        #endregion
-        #region "Check Gender"
-        private async Task <string> CheckGender(string filePath)
+
+
+        private string CheckGender(string filePath)
         {
+            //Image<Bgr, byte> imgInput = new Image<Bgr, byte>(filePath);
+            //long detectionTime;
+            //List<Rectangle> faces = new List<Rectangle>();
+            //List<Rectangle> eyes = new List<Rectangle>();
+            //DetectFace.Detect(
+            //  imgInput, "haarcascade_frontalface_default.xml", "haarcascade_eye.xml",
+            //  faces, eyes,
+            //  out detectionTime);
+            //foreach (Rectangle face in faces)
+            //    CvInvoke.Rectangle(imgInput, face, new Bgr(Color.Red).MCvScalar, 2);
+            //foreach (Rectangle eye in eyes)
+            //    CvInvoke.Rectangle(imgInput, eye, new Bgr(Color.Blue).MCvScalar, 2);
+            //CvInvoke.CvtColor(imgInput, imgInput, Emgu.CV.CvEnum.ColorConversion.Rgb2Gray);
+            //CvInvoke.Resize(imgInput, imgInput, new Size(64, 64), 0, 0, Inter.Linear);
+            //EigenFaceRecognizer.PredictionResult predictedLabel = facess.Predict(imgInput);
+            //if (faces.Count() == 1)
+            //{
+            //    if (predictedLabel.Label == 0)
+            //    {
+            //        return "Wanita";
+            //    }
+            //    else if (predictedLabel.Label == 1)
+            //    {
+            //        return "Pria";
+            //    }
+            //    else
+            //    {
+            //        return "Please Train Me!!";
+            //    }
+            //}
+            //else if (faces.Count() > 0)
+            //{
+            //    return "N/A";
+            //}
+            //else
+            //{
+            //    return "N/A";
+            //}
+
+
             Image<Bgr, byte> imgInput = new Image<Bgr, byte>(filePath);
             long detectionTime;
             List<Rectangle> faces = new List<Rectangle>();
@@ -342,38 +404,61 @@ namespace GenderRecognition
                 CvInvoke.Rectangle(imgInput, face, new Bgr(Color.Red).MCvScalar, 2);
             foreach (Rectangle eye in eyes)
                 CvInvoke.Rectangle(imgInput, eye, new Bgr(Color.Blue).MCvScalar, 2);
-            CvInvoke.CvtColor(imgInput, imgInput, Emgu.CV.CvEnum.ColorConversion.Rgb2Gray);
-            CvInvoke.Resize(imgInput, imgInput, new Size(48, 48), 0, 0, Inter.Linear);
-            EigenFaceRecognizer.PredictionResult predictedLabel = facess.Predict(imgInput);
+            
             if (faces.Count() == 1)
             {
-                if (predictedLabel.Label == 0)
-                {
-                    return "Wanita";
-                }
-                else if (predictedLabel.Label == 1)
-                {
-                    return "Pria";
-                }
-                else
-                {
-                    return "Please Train Me!!";
-                }
+                Image<Bgr, Byte> buffer_im = imgInput;
+                buffer_im.ROI = faces[0];
+                Image<Bgr, Byte> cropped_im = buffer_im.Copy();
+
+
+                MCvScalar MODEL_MEAN_VALUES = new MCvScalar(78.4263377603, 87.7689143744, 114.895847746);
+                Mat blob = Emgu.CV.Dnn.DnnInvoke.BlobFromImage(cropped_im, 1, new Size(227, 227), MODEL_MEAN_VALUES, false);
+                Gendernet.SetInput(blob);
+                AgeNet.SetInput(blob);
+                List<float> data = new List<float>();
+                Mat genderPreds = Gendernet.Forward();
+                Mat agePreds = AgeNet.Forward();
+
+                int genderId = 0;
+                double genderProb = 0;
+                getMaxClass(ref genderPreds, ref genderId, ref genderProb);
+                string gender = list[genderId];
+
+                int ageId = 0;
+                double ageProb = 0;
+                getMaxClass(ref agePreds, ref ageId, ref ageProb);
+                string age = listAge[ageId];
+                return gender + "|" + age;
+  
             }
-            else if (faces.Count() > 0)
+            else if (faces.Count() > 1)
             {
-                return "N/A";
+                return "Kelompok" + "|" + "";
             }
             else
             {
-                return "N/A Because No Face Detection";
+                return "N/A" + "|" + "";
             }
-
         }
-        #endregion
-        #region "Event"
+        void getMaxClass(ref Mat probBlob, ref int classId, ref double classProb)
+        {
+            Mat probMat = probBlob.Reshape(1, 1); //reshape the blob to 1x1000 matrix
+            Point classNumber = new Point();
+            var tmp = new Point();
+            double tmpdouble = 0;
+            CvInvoke.MinMaxLoc(probMat, ref tmpdouble, ref classProb, ref tmp, ref classNumber);
+            classId = classNumber.X;
+        }
+
+
         private async void importBTN_ClickAsync(object sender, EventArgs e)
         {
+            lblTotalData.Text = "Total Data : ";
+            lblTotalPria.Text = "Total Data Pria : ";
+            lblTotalWanita.Text = "Total Data Wanita : ";
+            lblTotalKelompok.Text = "Total Data Kelompok : ";
+            lblTotalNA.Text = "Total Data N/A : ";
             dgSourceFolder.AutoGenerateColumns = false;
             if (folderRB.Checked)
             {
@@ -428,7 +513,9 @@ namespace GenderRecognition
             {
                 foreach (var item in sourceFolderModels)
                 {
-                    item.gender = await CheckGender(selectedFolder + "\\" + item.name + ".jpg");
+                    string ret = CheckGender(selectedFolder + "\\" + item.name + ".jpg");
+                    item.gender = ret.Split('|')[0];
+                    item.Age = ret.Split('|')[1];
                 }
             }
             else if (importRB.Checked)
@@ -465,12 +552,25 @@ namespace GenderRecognition
                 MessageBox.Show("Finish Load URL");
             }
         }
-        private async void FormMain_LoadAsync(object sender, EventArgs e)
+        private void FormMain_LoadAsync(object sender, EventArgs e)
         {
             dgSourceExcel.Visible = false;
             dgSourceFolder.Visible = false;
-            facess = new EigenFaceRecognizer(48, double.PositiveInfinity);
-            learnAsync();
+            facess = new FisherFaceRecognizer(0, 3000);
+            Gendernet = Emgu.CV.Dnn.DnnInvoke.ReadNetFromCaffe(Application.StartupPath + "\\gender_net.prototxt", Application.StartupPath + "\\gender_net.caffemodel");
+            AgeNet = Emgu.CV.Dnn.DnnInvoke.ReadNetFromCaffe(Application.StartupPath + "\\age_net.prototxt", Application.StartupPath + "\\age_net.caffemodel");
+            list[0] = "Pria";
+            list[1] = "Wanita";
+            listAge[0] = "(0-2)";
+            listAge[1] = "(4-6)";
+            listAge[2] = "(8-12)";
+            listAge[3] = "(15-20)";
+            listAge[4] = "(25-32)";
+            listAge[5] = "(38-43)";
+            listAge[6] = "(48-53)";
+            listAge[7] = "(60-100)";
+
+
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -566,14 +666,14 @@ namespace GenderRecognition
             }
 
         }
-        #endregion
-        #region "backgroundWorker"
+
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             readFolderAsync(selectedFolder);
         }
 
-        private async void sourceExcelBG_DoWorkAsync(object sender, DoWorkEventArgs e)
+        private void sourceExcelBG_DoWorkAsync(object sender, DoWorkEventArgs e)
         {
        
             readExcelAsync(selectedFile);
@@ -586,6 +686,7 @@ namespace GenderRecognition
             {
                 dgSourceExcel.DataSource = sourceExcelModels;
                 dgSourceExcel.Visible = true;
+
             }
 
         }
@@ -595,12 +696,12 @@ namespace GenderRecognition
             MessageBox.Show("Load Data From Folder Finish");
             dgSourceFolder.DataSource = sourceFolderModels;
             dgSourceFolder.Visible = true;
+            lblTotalData.Text = String.Format(lblTotalData.Text + "{0} Data", sourceFolderModels.Count.ToString());
         }
-        #endregion
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Learn();
+            //Learn();
             MessageBox.Show("Success Refresh Database");
         }
 
@@ -655,11 +756,11 @@ namespace GenderRecognition
             
         }
 
-        private async void checkGenderToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        private void checkGenderToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
             if (folderRB.Checked)
             {
-                dgSourceFolder.Rows[rowSelected].Cells[3].Value = await CheckGender(dgSourceFolder.Rows[rowSelected].Cells[4].Value.ToString());
+                dgSourceFolder.Rows[rowSelected].Cells[3].Value = CheckGender(dgSourceFolder.Rows[rowSelected].Cells[4].Value.ToString());
             }
             else
             {
@@ -677,32 +778,88 @@ namespace GenderRecognition
             _methodCheckGender = "Manual";
         }
 
-        private async void checkGenderBTN_ClickAsync(object sender, EventArgs e)
+        private void checkGenderBTN_ClickAsync(object sender, EventArgs e)
         {
+            progressBar1.Value = 0;
+            bgCheckGender.RunWorkerAsync();
+
+            //MessageBox.Show("Finish Check Gender : " + (watch.ElapsedMilliseconds / 1000).ToString() + " Seconds");
+            //foreach (DataGridViewRow item in dgSourceFolder.Rows)
+            //{
+            //    item.Cells[0].Value = false;
+            //}
+        }
+
+        void StartCheckGender()
+        {
+            lblTotalPria.Text = "Total Data Pria : ";
+            lblTotalWanita.Text = "Total Data Wanita : ";
+            lblTotalKelompok.Text = "Total Data Kelompok : ";
+            lblTotalNA.Text = "Total Data N/A : ";
             MessageBox.Show("Please Make Sure Checklist Data To Use Batch Check Gender");
             dgSourceFolder.EndEdit();
             Stopwatch watch = new Stopwatch();
             watch.Start();
-            foreach (DataGridViewRow item in dgSourceFolder.Rows)
+            int counter1 = 1;
+            if (bunifuCheckbox1.Checked)
             {
-                if (item.Cells[0].Value.ToString() == "True")
+                int xx = counter1 * 100 / 765;
+                foreach (var item in sourceFolderModels)
                 {
-                    if (item.Cells[4].Value.ToString() != "")
+                    string ret = CheckGender(selectedFolder + "\\" + item.name + ".jpg");
+                    item.gender = ret.Split('|')[0];
+                    item.Age = ret.Split('|')[1];
+                    int percentage = Convert.ToInt32(Math.Floor(Convert.ToDouble((counter1 * 100)/sourceFolderModels.Count)));
+                    bgCheckGender.ReportProgress(percentage);
+                    counter1++;
+                }
+                lblTotalPria.Text = string.Format(lblTotalPria.Text + "{0} Data", sourceFolderModels.Where(x => x.gender == "Pria").Count().ToString());
+                lblTotalWanita.Text = string.Format(lblTotalWanita.Text + "{0} Data", sourceFolderModels.Where(x => x.gender == "Wanita").Count().ToString());
+                lblTotalKelompok.Text = string.Format(lblTotalKelompok.Text + "{0} Data", sourceFolderModels.Where(x => x.gender == "Kelompok").Count().ToString());
+                lblTotalNA.Text = string.Format(lblTotalNA.Text + "{0} Data", sourceFolderModels.Where(x => x.gender == "N/A").Count().ToString());
+
+            }
+            else
+            {
+                int counter2 = 1;
+                foreach (DataGridViewRow item in dgSourceFolder.Rows)
+                {
+                    if (item.Cells[0].Value.ToString() == "True")
                     {
-                        item.Cells[3].Value = await CheckGender(item.Cells[4].Value.ToString());
+                        if (item.Cells[4].Value.ToString() != "")
+                        {
+                            string ret = CheckGender(item.Cells[4].Value.ToString());
+                            item.Cells[3].Value = ret.Split('|')[0];
+                            item.Cells[5].Value = ret.Split('|')[1];
+                            int percentage = Convert.ToInt32(Math.Floor(Convert.ToDouble((counter1 * 100) / sourceFolderModels.Count)));
+                            bgCheckGender.ReportProgress(percentage);
+                            counter2++;
+                        }
                     }
                 }
             }
-            MessageBox.Show("Finish Check Gender : " + (watch.ElapsedMilliseconds / 1000).ToString() + " Seconds");
-            foreach (DataGridViewRow item in dgSourceFolder.Rows)
-            {
-                item.Cells[0].Value = false;
-            }
+
         }
 
         private void lbl_check_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bgCheckGender_DoWork(object sender, DoWorkEventArgs e)
+        {
+            StartCheckGender();
+        }
+
+        private void bgCheckGender_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void bgCheckGender_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            dgSourceFolder.Refresh();
+            MessageBox.Show("Finish Check Gender");
         }
     }
 }
